@@ -23,6 +23,7 @@ def check_db(id, title, description, price):
 ''')
     connection.commit()
     connection.close()
+initiate_db()
 
 check_db(1, 'lemon', 'Сплошной витамин С', 100)
 check_db(2, 'mango', 'Профилактика раковых новообразований', 200)
@@ -33,9 +34,8 @@ def get_all_products():
     connection = sqlite3.connect('Fruts.db')
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM Products WHERE id > ?', (0,))
-
-    connection.commit()
+    data = cursor.fetchall()
+    #connection.commit()
     connection.close()
-initiate_db()
-    #return cursor.fetchall()
+    return data
 
