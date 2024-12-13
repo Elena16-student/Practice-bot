@@ -35,7 +35,7 @@ def get_all_products():
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM Products WHERE id > ?', (0,))
     data = cursor.fetchall()
-    #connection.commit()
+    connection.commit()
     connection.close()
     return data
 
